@@ -1,5 +1,5 @@
 language: cpp
-script: make release-static
+
 dist: xenial
 before_install:
   - sudo apt-get install libboost-all-dev -y
@@ -14,7 +14,8 @@ addons:
       - cmake
       - pkg-config
       - libunbound-dev
-  script:
+
+script: 
 mkdir bcndev
 cd bcndev
 git clone https://github.com/bcndev/bytecoin.git
@@ -23,7 +24,8 @@ mkdir bytecoin/build
 cd bytecoin/build
 cmake .. 
 time make -j4
-            make
+make release-static
+
   os: 
      - osx
      #- linux
