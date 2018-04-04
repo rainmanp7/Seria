@@ -1,0 +1,30 @@
+language: cpp
+script: make release-static
+dist: xenial
+before_install:
+  - sudo apt-get install libboost-all-dev -y
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libssl-dev
+      - libboost-all-dev
+      - build-essential
+      - cmake
+      - pkg-config
+      - libunbound-dev
+  script:
+mkdir bcndev
+cd bcndev
+git clone https://github.com/bcndev/bytecoin.git
+git clone https://github.com/LMDB/lmdb.git
+mkdir bytecoin/build
+cd bytecoin/build
+cmake .. 
+time make -j4
+            make
+  os: 
+     - osx
+     #- linux
+
